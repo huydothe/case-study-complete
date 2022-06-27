@@ -8,7 +8,6 @@ let food = new Food();
 food.draw_food()
 
 let count=0;
-let flag=true;
 
 function spawn(food) {
     food.clear_food()
@@ -28,7 +27,7 @@ function play() {
     snake.check_lose();
 
 }
-setInterval(play,100)
+let interval = setInterval(play,100)
 
 
 window.addEventListener('keydown', function (event) {

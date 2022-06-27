@@ -1,4 +1,4 @@
-let unit=40;//unit la 1 dv di chuyen or toa do
+let unit=40;//unit la 1 đơn vị di chuyển hoặc 1 đơn vị tọa độ.
 let snake_color='white'
 
 
@@ -33,9 +33,6 @@ class Snake {
         this.x = x;
         this.y = y;
         this.body = [
-            new Vector(unit * 9, unit * 3),
-            new Vector(unit * 8, unit * 3),
-            new Vector(unit * 7, unit * 3),
             new Vector(unit * 6, unit * 3),
             new Vector(unit * 5, unit * 3),
             new Vector(unit * 4, unit * 3),
@@ -97,7 +94,20 @@ class Snake {
     check_lose(){
         for(let i=1; i<this.body.length; i++){
             if(this.body[0].x === this.body[i].x && this.body[0].y === this.body[i].y){
-                alert('Thua' + ' and Your Score is ' + count + ' diem');
+                alert('You lose' + ' and Your Score is ' + count);
+                let choice = confirm('Do you want play again ?')
+                if(choice == true){
+                    this.clear_snake()
+                    this.body = [
+                        new Vector(unit * 6, unit * 3),
+                        new Vector(unit * 5, unit * 3),
+                        new Vector(unit * 4, unit * 3),
+                    ]
+                }else {
+                    clearInterval(interval);
+                    this.ctx.fillStyle='black';
+                    this.ctx.fillRect(0,0,this.width,this.height)
+                }
             }
         }
     }
@@ -142,6 +152,7 @@ class Food {
         this.ctx.fillRect(0, 0, unit, unit)
     }
 }
+
 
 
 
